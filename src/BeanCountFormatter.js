@@ -1,17 +1,8 @@
 function BeanCountFormatter() {}
 
 BeanCountFormatter.prototype.formatOutput = function(inventory, found) {
-	var output = "Inventory: " + inventory + ", Found: " + found + ", ";
-
-	if(this.isSurplus(inventory, found)) {
-		output += "Surplus: " + Math.abs(inventory - found);
-	} else {
-		output += "Missing: " + (inventory - found);
+	if((inventory - found) < 0) {
+		return "Inventory: " + inventory + ", Found: " + found + ", Surplus: " + Math.abs(inventory - found);
 	}
-	
-	return output;
+	return "Inventory: " + inventory + ", Found: " + found + ", Missing: " + (inventory - found);
 }
-
-BeanCountFormatter.prototype.isSurplus = function(inventory, found) {
-	return found > inventory;
-};

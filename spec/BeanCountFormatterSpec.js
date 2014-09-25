@@ -22,4 +22,8 @@ describe("Bean Counter", function () {
         expect(beanCountFormatter.formatOutput(sample.inventory, sample.found)).toEqual(sample.output);
     });
   });
+
+  it('formats inventory log message for surplus', function () {
+    expect(beanCountFormatter.formatOutput(10, 15)).toEqual("Inventory: 10, Found: 15, Surplus: 5");
+  });
 });
